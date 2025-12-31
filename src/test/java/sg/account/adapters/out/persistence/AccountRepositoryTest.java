@@ -1,10 +1,7 @@
 package sg.account.adapters.out.persistence;
 
 import org.junit.jupiter.api.Test;
-import sg.account.dto.AccountDto;
-import sg.account.dto.AccountIdDto;
-import sg.account.dto.OperationDto;
-import sg.account.dto.OperationType;
+import sg.account.dto.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -40,7 +37,7 @@ class AccountRepositoryTest {
     }
 
     private static AccountDto createAccountDto() {
-        return new AccountDto(_0_BALANCE_ACCOUNT, BigDecimal.ZERO, List.of(new OperationDto(TIME, BigDecimal.TEN, BigDecimal.TEN, OperationType.WITHDRAWAL)));
+        return new AccountDto(_0_BALANCE_ACCOUNT, BigDecimal.ZERO, Currency.EUR, List.of(new OperationDto(TIME, BigDecimal.TEN, BigDecimal.TEN, OperationType.WITHDRAWAL)));
     }
 
 

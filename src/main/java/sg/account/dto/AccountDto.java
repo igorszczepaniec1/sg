@@ -7,5 +7,6 @@ import java.util.UUID;
 
 public record AccountDto(UUID id,
                          BigDecimal balance,
+                         Currency currency,
                          List<OperationDto> operations) {
 }

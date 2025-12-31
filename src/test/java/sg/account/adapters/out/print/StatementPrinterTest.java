@@ -29,7 +29,7 @@ class StatementPrinterTest {
 
         //then
         var expectedResult = """
-                DATE | AMOUNT | BALANCE | TYPE
+                DATE                |       AMOUNT |      BALANCE |         TYPE
                 2020-10-29T10:10:00 |        50.50 |       600.50 |      DEPOSIT
                 2020-10-28T10:10:00 |       500.00 |       550.00 |      DEPOSIT
                 2020-10-27T10:10:00 |        50.00 |        50.00 |   WITHDRAWAL
@@ -43,7 +43,7 @@ class StatementPrinterTest {
     @Test
     void print_should_return_headers_only_when_no_operations() {
         var result = statementPrinter.print(List.of());
-        var expectedResult = "DATE | AMOUNT | BALANCE | TYPE";
+        var expectedResult = "DATE                |       AMOUNT |      BALANCE |         TYPE";
 
         assertEquals(expectedResult, result);
     }

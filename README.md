@@ -111,6 +111,8 @@ After writing this README it really feels like a sales pitch but please understa
 
 
 
+I tried not to overengineer it this time.  
+Changes are pretty self-explanatory imo. Hopefully that's what you expected, requirements wise.
 
 
 

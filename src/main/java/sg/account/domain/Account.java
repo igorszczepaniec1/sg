@@ -1,6 +1,7 @@
 package sg.account.domain;
 
 import sg.account.dto.AmountDto;
+import sg.account.dto.Currency;
 import sg.account.exceptions.InsufficientFundsException;
 
 import java.time.LocalDateTime;
@@ -10,11 +11,13 @@ class Account {
 
     private final AccountId accountId;
     private final Balance balance;
+    private final Currency currency;
     private final List<Operation> operations;
 
-    Account(AccountId accountId, Balance balance, List<Operation> operations) {
+    Account(AccountId accountId, Balance balance, Currency currency, List<Operation> operations) {
         this.accountId = accountId;
         this.balance = balance;
+        this.currency = currency;
         this.operations = operations;
     }
 
@@ -45,5 +48,9 @@ class Account {
 
     List<Operation> getOperations() {
         return operations;
+    }
+
+    Currency getCurrency() {
+        return currency;
     }
 }

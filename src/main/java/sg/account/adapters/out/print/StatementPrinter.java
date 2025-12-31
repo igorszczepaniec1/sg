@@ -4,14 +4,20 @@ import sg.account.dto.OperationDto;
 import sg.account.ports.out.StatementPrinterPort;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
 public class StatementPrinter implements StatementPrinterPort {
 
-    private static final String HEADER = "DATE | AMOUNT | BALANCE | TYPE";
+    private static final int DATE_WIDTH = 19;
+    private static final int NUM_WIDTH = 12;
+    private static final int TYPE_WIDTH = 12;
+
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    private static final String ROW_FMT = "%-" + DATE_WIDTH + "s | %" + NUM_WIDTH + "s | %" + NUM_WIDTH + "s | %" + TYPE_WIDTH + "s";
+    private static final String HEADER = String.format(Locale.ROOT, ROW_FMT, "DATE", "AMOUNT", "BALANCE", "TYPE");
 
     @Override
     public String print(List<OperationDto> operations) {
@@ -24,7 +30,7 @@ public class StatementPrinter implements StatementPrinterPort {
             sb.append(System.lineSeparator());
             sb.append(String.format(
                     Locale.ROOT,
-                    "%-10s | %12s | %12s | %12s",
+                    ROW_FMT,
                     operation.date().format(DATE_FMT),
                     format(operation.amount()),
                     format(operation.balance()),
@@ -35,6 +41,6 @@ public class StatementPrinter implements StatementPrinterPort {
     }
 
     private String format(BigDecimal v) {
-        return v.setScale(2).toPlainString();
+        return v.setScale(2, RoundingMode.HALF_DOWN).toPlainString();
     }
 }

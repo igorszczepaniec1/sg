@@ -27,19 +27,19 @@ class Operation {
         return new Operation(date, amount, balance, OperationType.WITHDRAWAL);
     }
 
-    public LocalDateTime getDate() {
+    LocalDateTime getDate() {
         return date;
     }
 
-    public BigDecimal getAmount() {
+    BigDecimal getAmount() {
         return amount;
     }
 
-    public BigDecimal getBalance() {
+    BigDecimal getBalance() {
         return balance;
     }
 
-    public OperationType getOperationType() {
+    OperationType getOperationType() {
         return operationType;
     }
 }

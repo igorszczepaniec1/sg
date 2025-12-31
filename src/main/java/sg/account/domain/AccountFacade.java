@@ -5,6 +5,7 @@ import sg.account.dto.DepositCommand;
 import sg.account.dto.WithdrawCommand;
 import sg.account.ports.out.AccountRepositoryPort;
 import sg.account.ports.out.DatePort;
+import sg.account.ports.out.FxRatePort;
 import sg.account.ports.out.StatementPrinterPort;
 
 public class AccountFacade {
@@ -13,9 +14,9 @@ public class AccountFacade {
     private final WithdrawService withdrawService;
     private final StatementService statementService;
 
-    public AccountFacade(AccountRepositoryPort accountRepositoryPort, DatePort datePort, StatementPrinterPort statementPrinterPort) {
-        this.depositService = new DepositService(accountRepositoryPort, datePort);
-        this.withdrawService = new WithdrawService(accountRepositoryPort, datePort);
+    public AccountFacade(AccountRepositoryPort accountRepositoryPort, DatePort datePort, StatementPrinterPort statementPrinterPort, FxRatePort fxRatePort) {
+        this.depositService = new DepositService(accountRepositoryPort, datePort, fxRatePort);
+        this.withdrawService = new WithdrawService(accountRepositoryPort, datePort, fxRatePort);
         this.statementService = new StatementService(accountRepositoryPort, statementPrinterPort);
     }
 

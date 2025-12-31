@@ -3,13 +3,14 @@ package sg.account.domain;
 import sg.account.exceptions.NegativeAmountException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 class Balance {
 
     private BigDecimal balance;
 
     Balance(BigDecimal balance) {
-        this.balance = balance;
+        this.balance = balance.setScale(2, RoundingMode.HALF_DOWN);
     }
 
     void add(BigDecimal amount) {

@@ -2,6 +2,7 @@ package sg.account.adapters.out.persistence;
 
 import sg.account.dto.AccountDto;
 import sg.account.dto.AccountIdDto;
+import sg.account.dto.Currency;
 import sg.account.ports.out.AccountRepositoryPort;
 
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class AccountRepository implements AccountRepositoryPort {
     }
 
     private AccountEntity createAccountEntity() {
-        return new AccountEntity(ID, BigDecimal.ZERO, new LinkedList<>());
+        return new AccountEntity(ID, BigDecimal.ZERO, Currency.EUR, new LinkedList<>());
     }
 
     @Override

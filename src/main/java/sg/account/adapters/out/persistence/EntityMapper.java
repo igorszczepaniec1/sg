@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 class EntityMapper {
 
     static AccountDto toDto(AccountEntity account) {
-        return new AccountDto(account.id(), account.balance(), toOperationsDto(account.operations()));
+        return new AccountDto(account.id(), account.balance(), account.currency(), toOperationsDto(account.operations()));
     }
 
     static AccountEntity fromDto(AccountDto accountDto) {
-        return new AccountEntity(accountDto.id(), accountDto.balance(), fromOperationsDto(accountDto.operations()));
+        return new AccountEntity(accountDto.id(), accountDto.balance(), accountDto.currency(), fromOperationsDto(accountDto.operations()));
     }
 
     private static List<OperationEntity> fromOperationsDto(List<OperationDto> operations) {

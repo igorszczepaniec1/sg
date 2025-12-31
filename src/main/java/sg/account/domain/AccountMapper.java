@@ -13,6 +13,7 @@ class AccountMapper {
         return new Account(
                 new AccountId(accountDto.id()),
                 new Balance(accountDto.balance()),
+                accountDto.currency(),
                 fromOperationsDto(accountDto.operations()));
     }
 
@@ -20,6 +21,7 @@ class AccountMapper {
         return new AccountDto(
                 account.getAccountId().getId(),
                 account.getBalance().getAmount(),
+                account.getCurrency(),
                 operationsToDto(account.getOperations()));
     }
 
