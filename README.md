@@ -1,3 +1,11 @@
+**How to run:**
+
+Required Java 21 
+
+mvn test
+
+---
+
 Hello dear reviewer from Societe Generale
 
 I would like to give a brief explanation of my decisions that shaped this implementation in a way it is.
